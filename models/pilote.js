@@ -13,7 +13,7 @@ module.exports.getLettresNom = function (callback) {
 module.exports.getListePilotes = function (lettre, callback) {
     db.getConnection(function (err, connexion) {
         if (!err) {
-            let sql = "SELECT DISTINCT PILNOM, PILPRENOM , PHOADRESSE FROM pilote p join photo ph ON p.PILNUM=ph.PILNUM  WHERE PILNOM LIKE '" + lettre  + "%' ";
+            let sql = "SELECT DISTINCT PILNOM, PILPRENOM , PHOADRESSE FROM pilote p join photo ph ON p.PILNUM=ph.PILNUM  WHERE PILNOM LIKE '" + lettre  + "%' AND PHONUM = 1 ";
             connexion.query(sql, callback);
             connexion.release();
         }
