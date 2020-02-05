@@ -12,5 +12,16 @@ module.exports.Repertoire = function(request, response){
          response.lettres = result;
          response.render('repertoirePilotes', response);
       });
-      
+};
+
+module.exports.Liste = function(request, response){
+      let data = request.params.lettre;
+      model.getListePilotes(data, function (err, result) {
+         if (err) {
+            console.log(err);
+            return;
+         }
+         response.pilotes = result;
+         response.render('listerPilotes', response);
+      });
 }

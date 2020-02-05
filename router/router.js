@@ -14,6 +14,8 @@ module.exports = function(app){
 
 // pilotes
     app.get('/repertoirePilote', PiloteController.Repertoire);
+    app.get('/listePilote/:lettre', PiloteController.Liste);
+
 
  // circuits
    app.get('/circuits', CircuitController.ListerCircuit);
