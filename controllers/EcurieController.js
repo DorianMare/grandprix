@@ -15,3 +15,16 @@ module.exports.ListerEcurie = function(request, response){
 response.render('listerEcurie', response);
 });
 }
+
+module.exports.DetailEcurie = function(request, response){
+  let data = request.params.ecunum;
+    model.getDetailEcurie(data, function (err, result) {
+        if (err) {
+            // gestion de l'erreur
+            console.log(err);
+            return;
+        }
+        response.detailEcurie = result;
+response.render('detailEcurie', response);
+});
+}
