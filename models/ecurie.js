@@ -35,7 +35,7 @@ module.exports.getDetailEcurie = function (ecunum, callback) {
         if(!err){
         	  // s'il n'y a pas d'erreur de connexion
         	  // execution de la requête SQL
-						let sql ="SELECT ECUNOM, ECUNOMDIR, ECUADRSIEGE, p.PAYNOM, ECUADRESSEIMAGE FROM `ecurie` e join pays p on e.PAYNUM=p.PAYNUM WHERE ECUNUM = " + ecunum
+							let sql ="SELECT ECUNOM, ECUNOMDIR, ECUADRSIEGE, p.PAYNOM,f.FPNOM, ECUADRESSEIMAGE FROM `ecurie` e join pays p on e.PAYNUM=p.PAYNUM left join fourn_pneu f on f.FPNUM = e.FPNUM WHERE ECUNUM = " + ecunum
 						//console.log (sql);
             connexion.query(sql, callback);
             // la connexion retourne dans le pool

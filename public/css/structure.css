@@ -1,4 +1,4 @@
-    body {
+  body {
     	font-family: "Segoe UI", "DejaVu Sans",Verdana, sans-serif;
     	background: url('/image/fond.jpg') repeat;
 		  font-size:0.8em;
@@ -63,4 +63,8 @@
  .photoNotFound {
    max-height: 40%;
    max-width: 40%;
+}
+
+.imgVoiture{
+  width: 100px;
 }

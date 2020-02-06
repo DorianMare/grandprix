@@ -1,10 +1,14 @@
 {{#each detailEcurie}}
-<img src="/image/ecurie/{{{this.ECUADRESSEIMAGE}}} " >
+    <img src="/image/ecurie/{{{this.ECUADRESSEIMAGE}}} " >
     <p>
       Nom : {{this.ECUNOM}} <br>
       Directeur : {{this.ECUNOMDIR}}<br>
       Adresse : {{this.ECUADRSIEGE}}<br>
-      Pays : {{this.PAYNOM}}
+      Pays : {{this.PAYNOM}}<br>
+      {{#if this.FPNOM}}
+        Fournisseur de pneumatiques : {{this.FPNOM}}
+      {{/if}}
     </p>
  {{/each}}
+ {{> listeVoiturePartial }}
  {{> listeEcuriePartial }}
