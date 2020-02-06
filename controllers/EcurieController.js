@@ -1,4 +1,5 @@
 let model = require('../models/ecurie.js');
+var async = require('async');
 
    // //////////////////////// L I S T E R  E C U R I E S
 
@@ -18,13 +19,26 @@ response.render('listerEcurie', response);
 
 module.exports.DetailEcurie = function(request, response){
   let data = request.params.ecunum;
-    model.getDetailEcurie(data, function (err, result) {
+
+  async.parallel([
+     function (callback) {
+        model.getListeEcurie(function (err, result) {
+           callback(null, result);
+        })
+     },
+     function (callback) {
+        model.getDetailEcurie(data, function (err, result) {
+           callback(null, result)
+        })
+     }
+  ],
+     function (err, result) {
         if (err) {
-            // gestion de l'erreur
-            console.log(err);
-            return;
+           console.log(err);
+           return;
         }
-        response.detailEcurie = result;
-response.render('detailEcurie', response);
+        response.listeEcurie = result[0];
+        response.detailEcurie = result[1];
+        response.render('detailEcurie', response);
 });
 }

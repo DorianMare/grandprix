@@ -1,8 +1,6 @@
 let model = require('../models/pilote');
 var async = require('async');
-
 // ///////////////////////// R E P E R T O I R E    D E S    P I L O T E S
-
 module.exports.Repertoire = function (request, response) {
    response.title = 'Répertoire des pilotes';
    model.getLettresNom(function (err, result) {
