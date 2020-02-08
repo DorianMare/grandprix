@@ -1,0 +1,29 @@
+{{> nomPilotePartial}}
+<img src="/image/pilote/{{detailsPilote.PHOADRESSE}}" alt="imagePilote">
+<p>Nom : {{detailsPilote.PILPRENOM}} {{detailsPilote.PILNOM}}</p>
+<p>Date de naissance : {{detailsPilote.PILDATENAIS}}</p>
+<p>Poids : {{detailsPilote.PILPOIDS}} Kg</p>
+<p>Nationalité : {{detailsPilote.PAYNAT}}</p>
+<p>Taille : {{detailsPilote.PILTAILLE}} Cm</p>
+
+<p>Ecurie :
+{{#if detailsPilote.ECUNOM}}
+    {{detailsPilote.ECUNOM}}</p>
+{{else}}
+    Pas d'écurie cette année</p>
+{{/if}}
+
+{{#if sponsoPilote}}
+    <p>Principaux sponsors :</p>
+    <p>
+    {{#each sponsoPilote}}
+        {{this.SPONOM}} ({{this.SPOSECTACTIVITE}})<br/>
+    {{/each}}
+    </p>
+{{/if}}
+
+<p>Qui suis-je ? {{detailsPilote.PILTEXTE}}</p>
+
+{{#each photosPilote}}
+    <a href="/detailsImagePilote/{{this.PHONUM}}/{{this.PILNUM}}"><img src="/image/pilote/{{this.PHOADRESSE}}" alt="photoPilote"></a>
+{{/each}}
