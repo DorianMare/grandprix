@@ -20,6 +20,7 @@ module.exports = function(app){
 
  // circuits
    app.get('/circuits', CircuitController.ListerCircuit);
+   app.get('/detailsCircuit/:num', CircuitController.Details);
 
 // Ecuries
    app.get('/ecuries', EcurieController.ListerEcurie);
