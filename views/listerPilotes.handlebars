@@ -1,6 +1,7 @@
 {{> nomPilotePartial}}
+<h2>{{title}}</h2>
 {{#each pilotes}}
-		<img src="/image/pilote/{{{this.PHOADRESSE}}}">
-    <p>{{this.PILNOM}}
-    {{this.PILPRENOM}}</p>
- {{/each}}
+  <a href="/detailsPilote/{{this.PILNUM}}"><img src="/image/pilote/{{{this.PHOADRESSE}}}">
+  <p>{{this.PILNOM}}
+  {{this.PILPRENOM}}</p></a>
+{{/each}}
