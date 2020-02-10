@@ -1,7 +1,7 @@
 {{> nomPilotePartial}}
 <img src="/image/pilote/{{detailsPilote.PHOADRESSE}}" alt="imagePilote">
 <p>Nom : {{detailsPilote.PILPRENOM}} {{detailsPilote.PILNOM}}</p>
-<p>Date de naissance : {{detailsPilote.PILDATENAIS}}</p>
+<p>Date de naissance : {{formatDate vip.VIP_NAISSANCE 'DD MMMM YYYY' }}</p>
 <p>Poids : {{detailsPilote.PILPOIDS}} Kg</p>
 <p>Nationalité : {{detailsPilote.PAYNAT}}</p>
 <p>Taille : {{detailsPilote.PILTAILLE}} Cm</p>
@@ -25,5 +25,9 @@
 <p>Qui suis-je ? {{detailsPilote.PILTEXTE}}</p>
 
 {{#each photosPilote}}
-    <a href="/detailsImagePilote/{{this.PHONUM}}/{{this.PILNUM}}"><img src="/image/pilote/{{this.PHOADRESSE}}" alt="photoPilote"></a>
+    <a
+        href="/image/pilote/{{this.PHOADRESSE}}"
+        data-lightbox="imagepilote-set" data-title="{{this.PHOSUJET}} {{this.PHOCOMMENTAIRE}}">
+        <img style="width: 200px; height: auto;" src="/image/pilote/{{this.PHOADRESSE}}" alt="imagePilote">
+    </a>
 {{/each}}

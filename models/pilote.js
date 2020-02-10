@@ -57,22 +57,11 @@ module.exports.getSponsoPilote = function (num, callback) {
 module.exports.getPhotosPilote = function (num, callback) {
     db.getConnection(function (err, connexion) {
         if (!err) {
-            let sql = "SELECT ph.PHONUM, ph.PHOADRESSE, p.PILNUM FROM pilote p JOIN photo ph"
+            let sql = "SELECT ph.PHONUM, ph.PHOADRESSE, PHOSUJET, PHOCOMMENTAIRE, p.PILNUM FROM pilote p JOIN photo ph"
             + " ON p.PILNUM = ph.PILNUM WHERE p.PILNUM = " + num
             + " AND ph.PHONUM != 1";
             connexion.query(sql, callback);
             connexion.release;
         }
     });
-}
-
-module.exports.getDetailsImage = function (params, callback) {
-    db.getConnection(function (err, connexion) {
-        if (!err) {
-            let sql = "SELECT PHOADRESSE, PHOSUJET, PHOCOMMENTAIRE FROM photo"
-            + " WHERE PHONUM = " + params[0] + " AND PILNUM = " + params[1];
-            connexion.query(sql, callback);
-            connexion.release;
-        }
-    })
 }

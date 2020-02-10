@@ -43,7 +43,7 @@ module.exports.Liste = function (request, response) {
 }
 
 module.exports.Details = function (request, response) {
-   let data = request.params.num;
+   let numPilote = request.params.num;
 
    async.parallel([
       function (callback) {
@@ -52,17 +52,17 @@ module.exports.Details = function (request, response) {
          });
       },
       function (callback) {
-         model.getDetailsPilote(data, function (err, result) {
+         model.getDetailsPilote(numPilote, function (err, result) {
             callback(null, result);
          });
       },
       function (callback) {
-         model.getSponsoPilote(data, function (err, result) {
+         model.getSponsoPilote(numPilote, function (err, result) {
             callback(null, result);
          });
       },
       function (callback) {
-         model.getPhotosPilote(data, function (err, result) {
+         model.getPhotosPilote(numPilote, function (err, result) {
             callback(null, result);
          })
       }
@@ -79,19 +79,4 @@ module.exports.Details = function (request, response) {
          response.render('detailsPilote', response);
       }
    );
-}
-
-module.exports.DetailsImage = function (request, response) {
-   let data = [request.params.numImage, request.params.num];
-
-   model.getDetailsImage(data, function (err, result) {
-      if (err) {
-         console.log(err);
-         return;
-      }
-      response.phoadresse = result[0].PHOADRESSE;
-      response.phosujet = result[0].PHOSUJET;
-      response.phocommentaire = result[0].PHOCOMMENTAIRE;
-      response.render('detailsImagePilote', response);
-   });
 }
