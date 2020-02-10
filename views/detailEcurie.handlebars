@@ -10,6 +10,11 @@
       {{/if}}
     </p>
  {{/each}}
- {{> listePiloteEcuriePartial }}
- {{> listeVoiturePartial }}
+
+ {{#if listePilotesEcurie }}
+   {{> listePiloteEcuriePartial }}
+   {{> listeVoiturePartial }}
+ {{else}}
+    Cette écurie ne participe pas au championnat cette année
+ {{/if}}
  {{> listeEcuriePartial }}

@@ -1,0 +1,37 @@
+<div class="resultat">
+    <table>
+      <tr>
+          <th>Place</th>
+        </tr>
+      {{#each grillePoints}}
+        <tr>
+            <td>{{this.PTPLACE}}</td>
+        </tr>
+      {{/each}}
+    </table>
+    <table>
+      <tr>
+          <th>Pilote</th>
+          <th>Temps</th>
+        </tr>
+      {{#each detailGrandPrix}}
+        <tr>
+            <td>{{this.PILNOM}}</td>
+            <td>{{this.TEMPSCOURSE}}</td>
+        </tr>
+      {{/each}}
+    </table>
+    <table>
+      <tr>
+          <th>NB POINTS</th>
+        </tr>
+      {{#each grillePoints}}
+        <tr>
+            <td>{{this.PTNBPOINTSPLACE}}</td>
+        </tr>
+      {{/each}}
+    </table>
+</div>
+
+<p>{{infoGrandPrix.GPCOMMENTAIRE}}</p>
+{{> listeGrandPrixPartial}}
