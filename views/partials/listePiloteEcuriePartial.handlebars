@@ -1,0 +1,11 @@
+
+{{#each listePilotesEcurie}}
+  <a href="/detailsPilote/{{this.PILNUM}}">
+    <p>
+      <button data-tippy-content="Tooltip">Text</button>
+
+      {{this.PILPRENOM}}
+      {{this.PILNOM  }}
+    </p>
+  </a>
+{{/each}}

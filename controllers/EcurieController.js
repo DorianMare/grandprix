@@ -1,6 +1,8 @@
 let model = require('../models/ecurie.js');
 let modelVoiture = require('../models/voiture.js');
+let modelPilote = require('../models/pilote.js');
 var async = require('async');
+
 
    // //////////////////////// L I S T E R  E C U R I E S
 
@@ -36,6 +38,11 @@ module.exports.DetailEcurie = function(request, response){
         modelVoiture.getListeVoiture(data, function (err, result) {
            callback(null, result);
         })
+     },
+     function (callback) {
+        modelPilote.getListePilotesEcurie(data, function (err, result) {
+           callback(null, result);
+        })
      }
   ],
      function (err, result) {
@@ -46,6 +53,7 @@ module.exports.DetailEcurie = function(request, response){
         response.listeEcurie = result[0];
         response.detailEcurie = result[1];
         response.listeVoiture = result[2];
+        response.listePilotesEcurie = result[3];
         response.render('detailEcurie', response);
 });
 }

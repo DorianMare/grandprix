@@ -20,6 +20,16 @@ module.exports.getListePilotes = function (lettre, callback) {
     });
 };
 
+module.exports.getListePilotesEcurie = function (ecunum, callback) {
+    db.getConnection(function (err, connexion) {
+        if (!err) {
+            let sql = "SELECT DISTINCT p.PILNUM, PILNOM, PILPRENOM FROM pilote p join ecurie e  ON p.ECUNUM=E.ECUNUM WHERE e.ecunum =" + ecunum;
+            connexion.query(sql, callback);
+            connexion.release();
+        }
+    });
+};
+
 module.exports.getDetailsPilote = function (num, callback) {
     db.getConnection(function (err, connexion) {
         if (!err) {
