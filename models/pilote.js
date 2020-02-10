@@ -23,7 +23,7 @@ module.exports.getListePilotes = function (lettre, callback) {
 module.exports.getListePilotesEcurie = function (ecunum, callback) {
     db.getConnection(function (err, connexion) {
         if (!err) {
-            let sql = "SELECT DISTINCT p.PILNUM, PILNOM, PILPRENOM FROM pilote p join ecurie e  ON p.ECUNUM=E.ECUNUM WHERE e.ecunum =" + ecunum;
+            let sql = "SELECT DISTINCT p.PILNUM, PILNOM, PILPRENOM, substring(PILTEXTE,1,100) as PILTEXTE, PHOADRESSE FROM pilote p join ecurie e  ON p.ECUNUM=E.ECUNUM join photo ph on p.PILNUM = ph.PILNUM WHERE PHONUM = 1 and e.ecunum =" + ecunum;
             connexion.query(sql, callback);
             connexion.release();
         }

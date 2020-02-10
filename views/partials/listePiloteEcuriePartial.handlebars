@@ -1,11 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Popper Tutorial</title>
+  </head>
+  <body>
+    {{#each listePilotesEcurie}}
+      <div class="tooltip">
+            <a href="/detailsPilote/{{this.PILNUM}}" id="pilote"  class="tooltip">
+               <p>
+                 {{this.PILPRENOM}}
+                 {{this.PILNOM  }}
+               </p>
+            </a>
 
-{{#each listePilotesEcurie}}
-  <a href="/detailsPilote/{{this.PILNUM}}">
-    <p>
-      <button data-tippy-content="Tooltip">Text</button>
-
-      {{this.PILPRENOM}}
-      {{this.PILNOM  }}
-    </p>
-  </a>
-{{/each}}
+            <span class="tooltiptext">
+                  <img src="/image/pilote/{{this.PHOADRESSE}}" alt="imagePilote">
+                  {{this.PILNOM  }}
+                  {{this.PILPRENOM}} <br>
+                  {{this.PILTEXTE}} ...
+            </span>
+        </div>
+    {{/each}}
+    <br>
+  </body>
+</html>
