@@ -13,6 +13,17 @@ module.exports.ListerGrandPrix = function(request, response){
     })
 }
 
+module.exports.ListerGrandPrixDate = function(request, response){
+    model.getListeGrandPrixDate(function (err, result) {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        response.listeGrandPrixDate = result[0];
+        response.render('home', response);
+    })
+}
+
 
 module.exports.DetailGrandPrix = function (request, response) {
     let data = request.params.gpnum;

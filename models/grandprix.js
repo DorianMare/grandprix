@@ -8,7 +8,7 @@ module.exports.getListeGrandPrix = function (callback) {
             connexion.release();
         }
     })
-}
+};
 
 module.exports.getDetailsGrandprix = function (gpnum, callback) {
     db.getConnection(function (err, connexion) {
@@ -18,7 +18,7 @@ module.exports.getDetailsGrandprix = function (gpnum, callback) {
             connexion.release();
         }
     })
-}
+};
 
 module.exports.getGrillePoints = function (gpnum, callback) {
     db.getConnection(function (err, connexion) {
@@ -28,7 +28,7 @@ module.exports.getGrillePoints = function (gpnum, callback) {
             connexion.release();
         }
     })
-}
+};
 
 module.exports.getInfoGrandPrix = function (gpnum, callback) {
     db.getConnection(function (err, connexion) {
@@ -38,4 +38,14 @@ module.exports.getInfoGrandPrix = function (gpnum, callback) {
             connexion.release();
         }
     })
-}
+};
+
+module.exports.getListeGrandPrixDate = function (callback) {
+    db.getConnection(function (err, connexion) {
+        if (!err) {
+            let sql = "SELECT GPNUM, GPNOM, GPDATE, GPDATEMAJ FROM grandprix WHERE 1 order by GPDATE DESC";
+            connexion.query(sql, callback);
+            connexion.release();
+        }
+    })
+};
