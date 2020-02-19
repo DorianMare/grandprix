@@ -1,5 +1,4 @@
-let Cryptr = require('cryptr'),
-    express         = require('express'),
+let express         = require('express'),
     session         = require('express-session'),
     cookieParser    = require('cookie-parser'),
     bodyParser      = require('body-parser'), //pour récupérer les résultats des post
