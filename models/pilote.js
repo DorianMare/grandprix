@@ -20,6 +20,15 @@ module.exports.getListePilotes = function (lettre, callback) {
     });
 };
 
+module.exports.ajouterPilote = function (data, callback) {
+    db.getConnection(function (err, connexion) {
+        if (!err) {
+            connexion.query('INSERT INTO pilote SET ?',data, callback);
+            connexion.release();
+        }
+    });
+};
+
 module.exports.getListePilotesEcurie = function (ecunum, callback) {
     db.getConnection(function (err, connexion) {
         if (!err) {
@@ -53,6 +62,17 @@ module.exports.getSponsoPilote = function (num, callback) {
         }
     });
 };
+
+module.exports.getAllPilotes = function (callback) {
+    db.getConnection(function (err, connexion) {
+        if (!err) {
+            let sql = "SELECT PILNUM, PILNOM, PILPRENOM, PILDATENAIS FROM pilote ORDER BY PILNOM asc";
+            connexion.query(sql, callback);
+            connexion.release;
+        }
+    });
+};
+
 
 module.exports.getPhotosPilote = function (num, callback) {
     db.getConnection(function (err, connexion) {

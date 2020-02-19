@@ -1,0 +1,26 @@
+<img src="/image/cat_pilote.png" alt="modif">
+<h1> Gestion des Pilotes </h1>
+<img src="/image/act_add.png" alt="modif">
+<a href="/ajouterPilote"> Ajouter un pilote</a>
+
+<table>
+  <tr>
+      <th>Nom</th>
+      <th>Prénom</th>
+      <th>Date de naissance</th>
+      <th>Actions</th>
+    </tr>
+  {{#each listeAllPilotes}}
+    <tr>
+        <td>{{this.PILNOM}}</td>
+        <td>{{this.PILPRENOM}}</td>
+        <td>{{this.PILDATENAIS}}</td>
+        <td>
+            <img src="/image/act_edit.png" alt="modif">
+            <a href="/modifierPilote/{{this.PILNUM}}"> Modifier</a>
+            <img src="/image/act_delete.png" alt="modif">
+            <a href="/supprimerPilote/{{this.PILNUM}}"> Supprimer</a>
+        </td>
+    </tr>
+  {{/each}}
+</table>

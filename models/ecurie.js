@@ -43,3 +43,18 @@ module.exports.getDetailEcurie = function (ecunum, callback) {
          }
       });
 };
+
+module.exports.getAllEcuries = function ( callback) {
+   // connection à la base
+	db.getConnection(function(err, connexion){
+        if(!err){
+        	  // s'il n'y a pas d'erreur de connexion
+        	  // execution de la requête SQL
+							let sql ="SELECT distinct p.PAYNUM, ECUNUM, ECUNOM, p.PAYNOM FROM `ecurie` e join pays p on e.PAYNUM=p.PAYNUM left join fourn_pneu f on f.FPNUM = e.FPNUM";
+						//console.log (sql);
+            connexion.query(sql, callback);
+            // la connexion retourne dans le pool
+            connexion.release();
+         }
+      });
+};

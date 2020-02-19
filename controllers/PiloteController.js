@@ -37,6 +37,7 @@ module.exports.Liste = function (request, response) {
          }
          response.lettres = result[0];
          response.pilotes = result[1];
+         console.log(result[1])
          response.render('listerPilotes', response);
       }
    );
