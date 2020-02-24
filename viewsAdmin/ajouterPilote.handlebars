@@ -1,23 +1,28 @@
 <h1>Ajouter un pilote</h1>
 <form action="\ajouterPilotePost" method="post">
-		Prénom : <input type="text" name="PILPRENOM" value="Dorian"> <br/> <br/>
-    Nom : <input type="text" name="PILNOM" value="Mare"> <br/> <br/>
-		Date de naissance : <input type="date" name="PILDATENAIS" value="2000-09-25"> <br/> <br/>
-    Nationalité : <select size="1" name="PAYNUM"/>
-                      {{#each FormulaireAjoutPilote}}
-                      <option value="{{this.PAYNUM }}"> {{this.PAYNOM}}
-                      </option>
-                      {{/each}}
-                  </select><br/> <br/>
-    ecurie : <select size="1" name="ECUNUM"/>
-                      {{#each FormulaireAjoutPilote}}
-                      <option value="{{this.ECUNUM }}"> {{this.ECUNOM}}
-                      </option>
-                      {{/each}}
-                  </select><br/> <br/>
-		Points : <input type="text" name="PILPOINTS" value="10"> pts <br/> <br/>
-		Poids : <input type="text" name="PILPOIDS" value="85"> kg <br/> <br/>
-		Taille : <input type="number" name="PILTAILLE" value="180"> cm <br/> <br/>
-		Description : <textarea cols="40" rows="5"  name="PILTEXTE" >Dorian MARE le pilote phare de l'écurie Major'Prom </textarea>
-		<input type="submit" value="Valider">
-	</form>
+  Prénom : <input type="text" name="PILPRENOM" value="Dorian"> <br /> <br />
+  Nom : <input type="text" name="PILNOM" value="Mare"> <br /> <br />
+  Date de naissance : <input type="date" name="PILDATENAIS" value="2000-09-25"> <br /> <br />
+  Nationalité : <select size="1" name="PAYNUM" />
+
+  {{#each FormulaireAjoutPilote}}
+  <option value="{{this.PAYNUM }}"> {{this.PAYNOM}}
+  </option>
+  {{/each}}
+  </select><br /> <br />
+  
+  ecurie : <select size="1" name="ECUNUM" />
+  
+  {{#each FormulaireAjoutPilote}}
+  <option value="{{this.ECUNUM }}"> {{this.ECUNOM}}
+  </option>
+  {{/each}}
+  
+  </select><br /> <br />
+  Points : <input type="text" name="PILPOINTS" value="10"> pts <br /> <br />
+  Poids : <input type="text" name="PILPOIDS" value="85"> kg <br /> <br />
+  Taille : <input type="number" name="PILTAILLE" value="180"> cm <br /> <br />
+  Description : <textarea cols="40" rows="5"
+    name="PILTEXTE">Dorian MARE le pilote phare de l'écurie Major'Prom </textarea>
+  <input type="submit" value="Valider">
+</form>
