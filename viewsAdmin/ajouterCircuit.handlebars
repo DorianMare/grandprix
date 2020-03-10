@@ -1,0 +1,27 @@
+<h1>Ajouter un circuit</h1>
+
+<form method="POST" action="/ajouterCircuitPost">
+    <label for="nom">Nom</label>
+    <input type="text">
+
+    <label for="longueur">Longueur</label>
+    <input type="text">
+
+    <label for="pays">Pays</label>
+    <select >
+        {{#each ecuries}}
+            <option value="{{this.PAYNUM}}">{{this.PAYNOM}}</option>
+        {{/each}}
+    </select>
+
+    <label for="image">Image</label>
+    <span></span>
+
+    <label for="nbSpectateurs">Nombre de spectateurs</label>
+    <input type="text">
+
+    <label for="description">Description</label>
+    <input type="text">
+
+    <input type="submit" value="Ajouter">
+</form>

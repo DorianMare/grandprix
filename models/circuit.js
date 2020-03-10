@@ -3,7 +3,7 @@ let db = require("../configDb");
 module.exports.getListeCircuit = function (callback) {
     db.getConnection(function (err, connexion) {
         if (!err) {
-            let sql = "SELECT CIRNUM, CIRNOM, PAYADRDRAP FROM circuit c JOIN pays p ON p.PAYNUM = c.PAYNUM";
+            let sql = "SELECT CIRNUM, CIRNOM, CIRLONGUEUR, CIRNBSPECTATEURS, PAYADRDRAP FROM circuit c JOIN pays p ON p.PAYNUM = c.PAYNUM";
             connexion.query(sql, callback);
             connexion.release();
         }
