@@ -6,15 +6,15 @@
   Date de naissance : <input type="date" name="PILDATENAIS" value="2000-09-25"> <br /> <br />
   Nationalité : <select size="1" name="PAYNUM" />
 
-  {{#each FormulaireAjoutPilote}}
-  <option value="{{this.PAYNUM }}"> {{this.PAYNOM}}
+  {{#each pays}}
+  <option value="{{this.PAYNUM}}"> {{this.PAYNOM}}
   </option>
   {{/each}}
   </select><br /> <br />
 
   ecurie : <select size="1" name="ECUNUM" />
 
-  {{#each FormulaireAjoutPilote}}
+  {{#each listeEcurie}}
   <option value="{{this.ECUNUM }}"> {{this.ECUNOM}}
   </option>
   {{/each}}
