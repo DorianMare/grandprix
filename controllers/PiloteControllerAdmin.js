@@ -76,8 +76,6 @@ module.exports.AjouterPilotePost = function (request, response) {
             }
          });
 
-         response.ajouterPilote = result[0];
-         response.ajouterPhotoPilote = result[1];
          response.render('ajouterPilotePost', response);
       }
    );
