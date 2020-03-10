@@ -14,6 +14,7 @@ module.exports.getListePilotes = function (lettre, callback) {
     db.getConnection(function (err, connexion) {
         if (!err) {
             let sql = "SELECT DISTINCT p.PILNUM, PILNOM, PILPRENOM, PHOADRESSE FROM pilote p join photo ph ON p.PILNUM=ph.PILNUM WHERE PILNOM LIKE '" + lettre  + "%' AND PHONUM = 1 ";
+
             connexion.query(sql, callback);
             connexion.release();
         }
@@ -24,6 +25,17 @@ module.exports.ajouterPilote = function (data, callback) {
     db.getConnection(function (err, connexion) {
         if (!err) {
             connexion.query('INSERT INTO pilote SET ?',data, callback);
+            connexion.release();
+        }
+    });
+};
+
+module.exports.ajouterPhotoPilote = function (data, callback) {
+    db.getConnection(function (err, connexion) {
+        if (!err) {
+            let sql = 'INSERT INTO photo (PHONUM, PILNUM, PHOADRESSE) SELECT 1,MAX(PILNUM),\''+ data +'\' FROM pilote';
+            console.log(sql);
+            connexion.query(sql, callback);
             connexion.release();
         }
     });

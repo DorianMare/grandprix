@@ -4,8 +4,10 @@ let express         = require('express'),
     bodyParser      = require('body-parser'), //pour récupérer les résultats des post
     http = require('http'),
     path = require('path');
+    fileUpload = require('express-fileupload');
 
 let app = express();
+app.use(fileUpload());
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('port', 6900);
