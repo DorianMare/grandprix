@@ -24,7 +24,7 @@ module.exports.FormulaireAjoutCircuit = function (request, response) {
     })
 }
 
-module.exports.AjouterPilotePost = function (request, response) {
+module.exports.AjouterCircuitPost = function (request, response) {
     //faire l'ajout du circuit dans la db quand l'ajout des image  sera terminé
     response.render('ajouterCircuitPost', response);
 }

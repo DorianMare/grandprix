@@ -5,9 +5,13 @@ let Cryptr = require('cryptr');
 module.exports.Index = function(request, response){
     if (request.session.isConnected != true) {
         request.session.isConnected = false;
+        response.title = "Partie administration"
+        response.render('home', response);
     }
-    response.title = "Administration";
-    response.render('home', response);
+    else{
+        response.title = "Bienvenue sur la partie administration du site WROOM";
+        response.render('accueil', response);
+    }
 };
 
 module.exports.Accueil = function (request, response) {
