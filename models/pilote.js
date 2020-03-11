@@ -96,4 +96,22 @@ module.exports.getPhotosPilote = function (num, callback) {
             connexion.release;
         }
     });
+};
+
+module.exports.supprimerPilote = function (num, callback) {
+    db.getConnection(function (err, connexion) {
+        if (!err) {
+            let sql = "DELETE FROM photo WHERE PILNUM =" + num
+            let sql1 = "DELETE FROM sponsorise WHERE PILNUM =" + num
+            let sql2 = "DELETE FROM ecurie WHERE PILNUM =" + num
+            let sql3 = "DELETE FROM course WHERE PILNUM =" + num
+            let sql4 = "DELETE FROM pilote WHERE PILNUM =" + num
+            connexion.query(sql);
+            connexion.query(sql1);
+            connexion.query(sql2);
+            connexion.query(sql3);
+            connexion.query(sql4, callback);
+            connexion.release;
+        }
+    });
 }

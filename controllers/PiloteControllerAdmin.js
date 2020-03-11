@@ -5,6 +5,8 @@ let modelPays = require('../models/pays');
 
 // ///////////////////////// R E P E R T O I R E    D E S    P I L O T E S
 module.exports.ListeAllPilotes = function (request, response) {
+  response.title = "Gestion des pilotes";
+
    model.getAllPilotes(function (err, result) {
       if (err) {
          console.log(err);
@@ -37,6 +39,18 @@ module.exports.FormulaireAjoutPilote = function (request, response) {
          response.pays = result[1];
          response.render('ajouterPilote', response);
       })
+};
+
+module.exports.SupprimerPilote = function (request, response) {
+  let data = request.params.pilnum;
+   model.supprimerPilote(data, function (err, result) {
+      if (err) {
+         console.log(err);
+         return;
+      }
+      response.supprimerPilote = result;
+      response.render('supprimerPilote', response);
+   });
 };
 
 module.exports.AjouterPilotePost = function (request, response) {

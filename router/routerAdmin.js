@@ -1,6 +1,8 @@
 let HomeControllerAdmin = require('../controllers/HomeControllerAdmin');
 let PiloteControllerAdmin = require('../controllers/PiloteControllerAdmin');
 let CircuitControllerAdmin = require('../controllers/CircuitControllerAdmin');
+let EcurieControllerAdmin = require('../controllers/EcurieControllerAdmin');
+
 
 let AuthentificationController = require('../controllers/AuthentificationController');
 
@@ -14,7 +16,9 @@ module.exports = function (app){
     // pilotes
     app.get('/adminListePilotes', AuthentificationController.VerifierEstConnecter, PiloteControllerAdmin.ListeAllPilotes);
     app.get('/ajouterPilote', AuthentificationController.VerifierEstConnecter, PiloteControllerAdmin.FormulaireAjoutPilote);
+    app.get('/supprimerPilote/:pilnum', AuthentificationController.VerifierEstConnecter, PiloteControllerAdmin.SupprimerPilote);
     app.post('/ajouterPilotePost', AuthentificationController.VerifierEstConnecter, PiloteControllerAdmin.AjouterPilotePost);
+
 
     //circuits
     app.get('/circuits', AuthentificationController.VerifierEstConnecter, CircuitControllerAdmin.ListeCircuitAdmin);
@@ -22,6 +26,13 @@ module.exports = function (app){
     app.post('/ajouterCircuitPost', AuthentificationController.VerifierEstConnecter, CircuitControllerAdmin.AjouterCircuitPost);
 
     //ecuries
+
+    app.get('/ecuries', AuthentificationController.VerifierEstConnecter, EcurieControllerAdmin.ListeEcuriesAdmin);
+    app.get('/ajouterEcurie', AuthentificationController.VerifierEstConnecter, EcurieControllerAdmin.FormulaireAjoutEcurie);
+    app.get('/supprimerEcurie/:ecunum', AuthentificationController.VerifierEstConnecter, EcurieControllerAdmin.SupprimerEcurie);
+    app.post('/ajouterEcuriePost', AuthentificationController.VerifierEstConnecter, EcurieControllerAdmin.AjouterEcuriePost);
+
+
     //app.get('/ecuries', AuthentificationController.VerifierEstConnecter, )
 
     // Les pages inconnues

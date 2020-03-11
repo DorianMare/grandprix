@@ -17,7 +17,7 @@ module.exports.getListeEcurie = function (callback) {
       if (!err) {
          // s'il n'y a pas d'erreur de connexion
          // execution de la requête SQL
-         let sql = "SELECT ecunum, payadrdrap, ecunom FROM " +
+         let sql = "SELECT ECUNUM, PAYADRDRAP, ECUNOM, ECUNOMDIR, ECUPOINTS FROM " +
             "ecurie e INNER JOIN pays p ";
          sql = sql + "ON p.paynum=e.paynum ORDER BY ecunom";
          //console.log (sql);
@@ -58,3 +58,28 @@ module.exports.getAllEcuries = function (callback) {
       }
    });
 };
+
+module.exports.ajouterEcurie = function (data, data1, callback) {
+    db.getConnection(function (err, connexion) {
+        if (!err) {
+            connexion.query("INSERT INTO ecurie SET ECUADRESSEIMAGE =\'" + data1 +"\', ?",data, callback);
+            connexion.release();
+        }
+    });
+};
+
+module.exports.supprimerEcurie = function (num, callback) {
+    db.getConnection(function (err, connexion) {
+        if (!err) {
+            let sql ="UPDATE PILOTE SET ECUNUM = NULL WHERE ECUNUM =" + num
+            let sql1 = "DELETE FROM  voiture WHERE ECUNUM =" + num
+            let sql2 = "DELETE FROM finance WHERE ECUNUM =" + num
+            let sql3 = "DELETE FROM ecurie WHERE ECUNUM =" + num
+            connexion.query(sql);
+            connexion.query(sql1);
+            connexion.query(sql2);
+            connexion.query(sql3, callback);
+            connexion.release;
+        }
+    });
+}

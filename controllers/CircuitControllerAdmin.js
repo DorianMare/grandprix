@@ -19,7 +19,7 @@ module.exports.FormulaireAjoutCircuit = function (request, response) {
             console.log(err);
             return;
         }
-        response.ecuries = result;
+        response.circuit = result;
         response.render('ajouterCircuit', response);
     })
 }
