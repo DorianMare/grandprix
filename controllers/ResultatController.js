@@ -40,11 +40,6 @@ module.exports.DetailGrandPrix = function (request, response) {
             });
         },
         function (callback) {
-            model.getGrillePoints(data, function (err, result) {
-                callback(null, result);
-            });
-        },
-        function (callback) {
             model.getInfoGrandPrix(data, function (err, result) {
                 callback(null, result);
             });
@@ -57,11 +52,8 @@ module.exports.DetailGrandPrix = function (request, response) {
             }
             response.listeGrandPrix = result[0];
             response.detailGrandPrix = result[1];
-            response.grillePoints = result[2];
-            response.infoGrandPrix = result[3][0];
-            console.log(result[3][0])
+            response.infoGrandPrix = result[2][0];
             response.render('detailGrandPrix', response);
         }
     );
-
 }

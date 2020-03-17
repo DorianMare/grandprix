@@ -12,10 +12,11 @@
             <td>{{this.PILNOM}} {{this.PILPRENOM}}</td>
             <td>{{this.TEMPSCOURSE}}</td>
             <td>{{this.PTNBPOINTSPLACE}}</td>
+            <td>
+                <img src="/image/act_delete.png" alt="modif">
+                <a href="/supprimerLigneResultat/{{this.GPNUM}}/{{this.PILNUM}}"> Supprimer</a>
+            </td>
         </tr>
       {{/each}}
     </table>
 </div>
-
-<p>{{infoGrandPrix.GPCOMMENTAIRE}}</p>
-{{> listeGrandPrixPartial}}

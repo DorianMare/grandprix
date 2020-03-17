@@ -13,23 +13,12 @@ module.exports.getListeGrandPrix = function (callback) {
 module.exports.getDetailsGrandprix = function (gpnum, callback) {
     db.getConnection(function (err, connexion) {
         if (!err) {
-            let sql = "SELECT concat(p.PILNOM, p.PILPRENOM) as PILNOM , TEMPSCOURSE FROM course c join grandprix g on c.GPNUM=g.gpnum join pilote p on p.PILNUM=c.PILNUM WHERE g.GPNUM ="+ gpnum +" order by TEMPSCOURSE ASC ";
+            let sql = "select row_number, PILNOM, PILPRENOM, TEMPSCOURSE, PTNBPOINTSPLACE, PILNUM, GPNUM from (SELECT @row_number:=@row_number+1 AS row_number ,pilnom, pilprenom, tempscourse, p.pilnum, g.gpnum from course c join grandprix g on c.gpnum = g.gpnum join pilote p on c.pilnum = p.pilnum JOIN (SELECT @row_number := 0 FROM DUAL) as sub where c.gpnum =" + gpnum +" order by tempscourse asc limit 10) t join points p on p.PTPLACE=t.row_number ";
             connexion.query(sql, callback);
             connexion.release();
         }
     })
 };
-
-module.exports.getGrillePoints = function (gpnum, callback) {
-    db.getConnection(function (err, connexion) {
-        if (!err) {
-            let sql = "SELECT PTPLACE, PTNBPOINTSPLACE FROM points";
-            connexion.query(sql, callback);
-            connexion.release();
-        }
-    })
-};
-
 module.exports.getInfoGrandPrix = function (gpnum, callback) {
     db.getConnection(function (err, connexion) {
         if (!err) {
@@ -44,6 +33,17 @@ module.exports.getListeGrandPrixDate = function (callback) {
     db.getConnection(function (err, connexion) {
         if (!err) {
             let sql = "SELECT GPNUM, GPNOM, GPDATE, GPDATEMAJ FROM grandprix WHERE 1 order by GPDATE DESC";
+            connexion.query(sql, callback);
+            connexion.release();
+        }
+    })
+};
+
+module.exports.supprimerLigneResultat = function (gpnum, pilnum, callback) {
+    db.getConnection(function (err, connexion) {
+        if (!err) {
+            let sql = "DELETE from course where GPNUM=" + gpnum +" and PILNUM=" + pilnum;
+            console.log(sql);
             connexion.query(sql, callback);
             connexion.release();
         }
