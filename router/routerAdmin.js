@@ -36,6 +36,7 @@ module.exports = function (app){
     app.get('/resultats', AuthentificationController.VerifierEstConnecter, ResultatControllerAdmin.SelectionGrandPrix);
     app.get('/saisieResultats/:gpnum', ResultatControllerAdmin.SaisieResultats);
     app.get('/supprimerLigneResultat/:gpnum/:pilnum', AuthentificationController.VerifierEstConnecter, ResultatControllerAdmin.SupprimerLigneResultat);
+    app.post('/ajouterLigneResultat', AuthentificationController.VerifierEstConnecter, ResultatControllerAdmin.AjouterLigneResultat);
 
 
 

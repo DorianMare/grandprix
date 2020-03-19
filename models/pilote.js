@@ -14,7 +14,6 @@ module.exports.getListePilotes = function (lettre, callback) {
     db.getConnection(function (err, connexion) {
         if (!err) {
             let sql = "SELECT DISTINCT p.PILNUM, PILNOM, PILPRENOM, PHOADRESSE FROM pilote p join photo ph ON p.PILNUM=ph.PILNUM WHERE PILNOM LIKE '" + lettre  + "%' AND PHONUM = 1 ";
-
             connexion.query(sql, callback);
             connexion.release();
         }
@@ -85,6 +84,15 @@ module.exports.getAllPilotes = function (callback) {
     });
 };
 
+module.exports.getListePiloteNotInGP = function (gpnum, callback) {
+    db.getConnection(function (err, connexion) {
+        if (!err) {
+            let sql = "select DISTINCT PILNOM, p.PILNUM from pilote p join course c on c.pilnum = p.pilnum join grandprix g on c.gpnum=g.gpnum where p.pilnum not in ( select pilnum from course where gpnum ="+ gpnum +") order by pilnom asc";
+            connexion.query(sql, callback);
+            connexion.release;
+        }
+    });
+};
 
 module.exports.getPhotosPilote = function (num, callback) {
     db.getConnection(function (err, connexion) {

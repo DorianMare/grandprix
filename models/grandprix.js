@@ -22,7 +22,7 @@ module.exports.getDetailsGrandprix = function (gpnum, callback) {
 module.exports.getInfoGrandPrix = function (gpnum, callback) {
     db.getConnection(function (err, connexion) {
         if (!err) {
-            let sql = "SELECT GPCOMMENTAIRE from grandprix WHERE GPNUM =" + gpnum ;
+            let sql = "SELECT GPCOMMENTAIRE, GPNUM, GPNOM from grandprix WHERE GPNUM =" + gpnum ;
             connexion.query(sql, callback);
             connexion.release();
         }
@@ -48,4 +48,13 @@ module.exports.supprimerLigneResultat = function (gpnum, pilnum, callback) {
             connexion.release();
         }
     })
+};
+
+module.exports.ajouterLigneResultat = function (data, callback) {
+    db.getConnection(function (err, connexion) {
+        if (!err) {
+            connexion.query('INSERT INTO course SET ?',data, callback);
+            connexion.release();
+        }
+    });
 };
