@@ -3,7 +3,7 @@ let PiloteControllerAdmin = require('../controllers/PiloteControllerAdmin');
 let CircuitControllerAdmin = require('../controllers/CircuitControllerAdmin');
 let EcurieControllerAdmin = require('../controllers/EcurieControllerAdmin');
 let ResultatControllerAdmin = require('../controllers/ResultatControllerAdmin');
-
+let SponsorControllerAdmin = require('../controllers/SponsorControllerAdmin');
 
 let AuthentificationController = require('../controllers/AuthentificationController');
 
@@ -38,7 +38,11 @@ module.exports = function (app){
     app.get('/supprimerLigneResultat/:gpnum/:pilnum', AuthentificationController.VerifierEstConnecter, ResultatControllerAdmin.SupprimerLigneResultat);
     app.post('/ajouterLigneResultat', AuthentificationController.VerifierEstConnecter, ResultatControllerAdmin.AjouterLigneResultat);
 
-
+    // sponsors
+    app.get('/sponsor', AuthentificationController.VerifierEstConnecter, SponsorControllerAdmin.ListeSponsor);
+    app.get('/ajouterSponsor', AuthentificationController.VerifierEstConnecter, SponsorControllerAdmin.FormulaireAjoutSponsor);
+    app.get('/supprimerSponsor/:sponum', AuthentificationController.VerifierEstConnecter, SponsorControllerAdmin.SupprimerSponsor);
+    app.post('/ajouterSponsorPost', AuthentificationController.VerifierEstConnecter, SponsorControllerAdmin.AjouterSponsor);
 
     // Les pages inconnues
     app.get('*', AuthentificationController.VerifierEstConnecter, HomeControllerAdmin.NotFound);
