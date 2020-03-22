@@ -24,6 +24,7 @@ module.exports = function (app){
     //circuits
     app.get('/circuits', AuthentificationController.VerifierEstConnecter, CircuitControllerAdmin.ListeCircuitAdmin);
     app.get('/ajouterCircuit', AuthentificationController.VerifierEstConnecter, CircuitControllerAdmin.FormulaireAjoutCircuit);
+    app.get('/supprimerCircuit/:cirnum', AuthentificationController.VerifierEstConnecter, CircuitControllerAdmin.SupprimerCircuit)
     app.post('/ajouterCircuitPost', AuthentificationController.VerifierEstConnecter, CircuitControllerAdmin.AjouterCircuitPost);
 
     //ecuries
