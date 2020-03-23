@@ -88,11 +88,10 @@ module.exports.FormulaireModifCircuit = function (request, response) {
 }
 
 module.exports.ModifierCircuitPost = function (request, response) {
-    response.contenu = "le circuit a bien été modifié";
+    response.contenu = "Le circuit a bien été modifié";
     let cirnum = request.params.cirnum;
     let data = request.body;
     let file = request.files.CIRADRESSEIMAGE;
-    console.log(data);
 
     modelCircuit.modifierCircuit(cirnum, data, file.name, function (err, result) {
         if (err) {

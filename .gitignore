@@ -3,3 +3,8 @@
 *.*~
 # Ignorer le repertoire node_modules
 node_modules/*
+
+# Empecher d'envoyer ses propres images
+*.png
+*.jpg
+*.jpeg

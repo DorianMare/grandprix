@@ -1,16 +1,16 @@
 <h1>Ajouter un pilote</h1>
 
 <form action="/ajouterPilotePost" method="post" enctype="multipart/form-data">
-  Prénom : <input type="text" name="PILPRENOM" value="Dorian"> <br /> <br />
-  Nom : <input type="text" name="PILNOM" value="Mare"> <br /> <br />
-  Date de naissance : <input type="date" name="PILDATENAIS" value="2000-09-25"> <br /> <br />
+  Prénom : <input type="text" name="PILPRENOM" value="Dorian">
+  Nom : <input type="text" name="PILNOM" value="Mare">
+  Date de naissance : <input type="date" name="PILDATENAIS" value="2000-09-25">
   Nationalité : <select size="1" name="PAYNUM" />
 
   {{#each pays}}
   <option value="{{this.PAYNUM}}"> {{this.PAYNOM}}
   </option>
   {{/each}}
-  </select><br /> <br />
+  </select>
 
   ecurie : <select size="1" name="ECUNUM" />
 
@@ -19,15 +19,15 @@
   </option>
   {{/each}}
 
-  </select><br /> <br />
-  Points : <input type="text" name="PILPOINTS" value="10"> pts <br /> <br />
-  Poids : <input type="text" name="PILPOIDS" value="85"> kg <br /> <br />
-  Taille : <input type="number" name="PILTAILLE" value="180"> cm <br /> <br />
+  </select>
+  Points : <input type="text" name="PILPOINTS" value="10">
+  Poids : <input type="text" name="PILPOIDS" value="85">
+  Taille : <input type="number" name="PILTAILLE" value="180">
   Description : <textarea cols="40" rows="5"
-  name="PILTEXTE">Dorian MARE le pilote phare de l'écurie Major'Prom </textarea><br><br>
-   <input type="file" name="PHOADRESSE" /><br /> <br />
+    name="PILTEXTE">Dorian MARE le pilote phare de l'écurie Major'Prom </textarea>
+  <input type="file" name="PHOADRESSE" />
 
 
-  <input type="submit" value="Valider"/>
+  <input type="submit" value="Valider" />
 
 </form>

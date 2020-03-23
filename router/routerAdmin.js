@@ -19,7 +19,8 @@ module.exports = function (app){
     app.get('/ajouterPilote', AuthentificationController.VerifierEstConnecter, PiloteControllerAdmin.FormulaireAjoutPilote);
     app.get('/supprimerPilote/:pilnum', AuthentificationController.VerifierEstConnecter, PiloteControllerAdmin.SupprimerPilote);
     app.post('/ajouterPilotePost', AuthentificationController.VerifierEstConnecter, PiloteControllerAdmin.AjouterPilotePost);
-
+    app.get('/modifierPilote/:pilnum', AuthentificationController.VerifierEstConnecter, PiloteControllerAdmin.FormulaireModifPilote);
+    app.post('/modifierPilotePost/:pilnum', AuthentificationController.VerifierEstConnecter, PiloteControllerAdmin.ModifierPilotePost);
 
     //circuits
     app.get('/circuits', AuthentificationController.VerifierEstConnecter, CircuitControllerAdmin.ListeCircuitAdmin);

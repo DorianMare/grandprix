@@ -33,7 +33,16 @@ module.exports.ajouterPhotoPilote = function (data, callback) {
     db.getConnection(function (err, connexion) {
         if (!err) {
             let sql = 'INSERT INTO photo (PHONUM, PILNUM, PHOADRESSE) SELECT 1,MAX(PILNUM),\''+ data +'\' FROM pilote';
-            console.log(sql);
+            connexion.query(sql, callback);
+            connexion.release();
+        }
+    });
+};
+
+module.exports.modifierPhotoPilote = function (pilnum, file, callback) {
+    db.getConnection(function (err, connexion) {
+        if (!err) {
+            let sql = 'UPDATE photo set PHOADRESSE = \'' + file.name + '\' WHERE PHONUM = 1 AND PILNUM = ' + pilnum;
             connexion.query(sql, callback);
             connexion.release();
         }
@@ -53,7 +62,7 @@ module.exports.getListePilotesEcurie = function (ecunum, callback) {
 module.exports.getDetailsPilote = function (num, callback) {
     db.getConnection(function (err, connexion) {
         if (!err) {
-            let sql = "SELECT ECUNOM, PHOADRESSE, PILTEXTE, PILPOIDS, PILTAILLE, PILNOM, PILPRENOM, PILDATENAIS,"
+            let sql = "SELECT PILPOINTS, ECUNOM, PHOADRESSE, PILTEXTE, PILPOIDS, PILTAILLE, PILNOM, PILPRENOM, PILDATENAIS,"
             + " pa.PAYNAT FROM pilote p LEFT JOIN ecurie e ON p.ECUNUM = e.ECUNUM"
             + " JOIN pays pa ON p.PAYNUM = pa.PAYNUM JOIN photo ph ON p.PILNUM = ph.PILNUM WHERE p.PILNUM = " + num
             + " AND PHONUM = 1";
@@ -119,7 +128,20 @@ module.exports.supprimerPilote = function (num, callback) {
             connexion.query(sql2);
             connexion.query(sql3);
             connexion.query(sql4, callback);
-            connexion.release;
+            connexion.release();
+        }
+    });
+}
+
+module.exports.modifierPilote = function (pilnum, data, callback) {
+    db.getConnection(function (err, connexion) {
+        if (!err) {
+            let sql = 'UPDATE pilote SET PILPRENOM = ' + data.PILPRENOM + ', PILNOM = ' + data.PILPRENOM
+            + ', PILDATENAIS = ' + data.PILDATENAIS + ', PAYNUM = ' + data.PAYNUM + ', PILPOINTS = ' + data.PILPOINTS
+            + ', PILTEXTE = ' + data.PILTEXTE + ', PILPOIDS = ' + data.PILPOIDS + ', ECUNUM = ' + data.ecunum
+            + ' WHERE PILNUM = ' + pilnum;
+            connexion.query(sql, callback);
+            connexion.release();
         }
     });
 }
