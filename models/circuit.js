@@ -43,3 +43,15 @@ module.exports.supprimerCircuit = function (cirnum, callback) {
         }
     })
 }
+
+module.exports.modifierCircuit = function (cirnum, data, fileName, callback) {
+    db.getConnection(function (err, connexion) {
+        if (!err) {
+            sql = 'UPDATE circuit SET CIRNOM = \'' + data.CIRNOM + '\', CIRLONGUEUR = ' + data.CIRLONGUEUR
+            + ', PAYNUM = ' + data.PAYNUM + ', CIRNBSPECTATEURS = ' + data.CIRNBSPECTATEURS +
+            ', CIRTEXT = \'' + data.CIRTEXT + '\', CIRADRESSEIMAGE = \'' + fileName + '\' WHERE CIRNUM = ' + cirnum;
+            connexion.query(sql, callback);
+            connexion.release();
+        }
+    }) 
+}

@@ -1,6 +1,5 @@
 let modelCircuit = require('../models/circuit');
 let modelPays = require('../models/pays');
-let modelGrandPrix = require('../models/grandprix');
 let async = require('async');
 
 module.exports.ListeCircuitAdmin = function (request, response) {
@@ -38,40 +37,18 @@ module.exports.AjouterCircuitPost = function (request, response) {
         }
         file.mv("./public/image/circuit/" + file.name, function (err, result) {
             if (err) {
-              console.log(err);
+                console.log(err);
             } else {
-              console.log('Upload');
+                console.log('Upload');
             }
-          });
-          response.render('ajouterCircuitPost', response);
+        });
+        response.render('ajouterCircuitPost', response);
     })
 }
 
 
 module.exports.SupprimerCircuit = function (request, response) {
     let cirnum = request.params.cirnum;
-
-    /*async.parallel([
-        function (callback) {
-            modelGrandPrix.getGrandPrixAvecCirNum(cirnum, function (err, result) {
-                callback(null, result);
-            })
-        },
-        function (callback) {
-            modelCircuit.supprimerCircuit(cirnum, gpnum, function (err, result) {
-                callback(null, result);
-            })
-        },
-    ],
-        function (err, result) {
-            if (err) {
-                console.log(err);
-                return;
-            }
-            response.contenu = "Le circuit à bien été supprimé";
-            response.render('supprimerCircuitPost', response);
-        }
-    )*/
 
     modelCircuit.supprimerCircuit(cirnum, function (err, result) {
         if (err) {
@@ -80,5 +57,55 @@ module.exports.SupprimerCircuit = function (request, response) {
         }
         response.contenu = "Le circuit à bien été supprimé";
         response.render('supprimerCircuitPost', response);
+    })
+}
+
+module.exports.FormulaireModifCircuit = function (request, response) {
+    let cirnum = request.params.cirnum;
+
+    async.parallel([
+        function (callback) {
+            modelPays.getListePays(function (err, result) {
+                callback(null, result);
+            })
+        },
+        function (callback) {
+            modelCircuit.getDetailsCircuit(cirnum, function (err, result) {
+                callback(null, result);
+            });
+        }
+    ],
+        function (err, result) {
+            if (err) {
+                console.log(err);
+                return;
+            }
+            response.cirnum = cirnum;
+            response.circuitPays = result[0];
+            response.donneesCircuit = result[1][0];
+            response.render('modifierCircuit', response);
+        })
+}
+
+module.exports.ModifierCircuitPost = function (request, response) {
+    response.contenu = "le circuit a bien été modifié";
+    let cirnum = request.params.cirnum;
+    let data = request.body;
+    let file = request.files.CIRADRESSEIMAGE;
+    console.log(data);
+
+    modelCircuit.modifierCircuit(cirnum, data, file.name, function (err, result) {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        file.mv("./public/image/circuit/" + file.name, function (err, result) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log('Upload');
+            }
+        });
+        response.render('modifierCircuitPost', response);
     })
 }

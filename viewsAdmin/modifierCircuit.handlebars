@@ -1,0 +1,27 @@
+<h1>Modifier un circuit</h1>
+
+<form method="POST" action="/modifierCircuitPost/{{cirnum}}" enctype="multipart/form-data">
+    <label for="nom">Nom</label>
+    <input required type="text" name="CIRNOM" value="{{donneesCircuit.CIRNOM}}">
+
+    <label for="longueur">Longueur</label>
+    <input required type="number" name="CIRLONGUEUR" value="{{donneesCircuit.CIRLONGUEUR}}">
+
+    <label for="pays">Pays</label>
+    <select name="PAYNUM">
+        {{#each circuitPays}}
+            <option value="{{this.PAYNUM}}">{{this.PAYNOM}}</option>
+        {{/each}}
+    </select>
+
+    <label for="image">Image</label>
+    <input required type="file" name="CIRADRESSEIMAGE">
+
+    <label for="nbSpectateurs">Nombre de spectateurs</label>
+    <input required type="number" name="CIRNBSPECTATEURS" value="{{donneesCircuit.CIRNBSPECTATEURS}}">
+
+    <label for="description">Description</label>
+    <textarea required name="CIRTEXT">{{donneesCircuit.CIRTEXT}}</textarea>
+
+    <input type="submit" value="Modifier">
+</form>
