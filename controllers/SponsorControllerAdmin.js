@@ -57,3 +57,46 @@ module.exports.SupprimerSponsor = function(request, response){
         response.render('supprimerSponsor', response);
     })
 }
+
+module.exports.FormulaireModifSponsor = function (request, response) {
+    let sponum = request.params.sponum;
+    console.log(sponum);
+
+    async.parallel([
+        function (callback) {
+            modelEcurie.getAllEcuries(function (err, result) {
+                callback(null, result);
+            })
+        },
+        function (callback) {
+            model.getDetailsSponsor(sponum, function (err, result) {
+                callback(null, result);
+            });
+        }
+    ],
+        function (err, result) {
+            if (err) {
+                console.log(err);
+                return;
+            }
+            response.sponum = sponum;
+            response.listeEcurie = result[0];
+            response.donneesSponsor = result[1][0];
+            console.log(result[1][0]);
+            response.render('modifierSponsor', response);
+        })
+}
+
+module.exports.ModifierSponsorPost = function (request, response) {
+    response.contenu = "Le Sponsor a bien été modifié";
+    let sponum = request.params.sponum;
+    let data = request.body;
+
+    model.modifierSponsor(sponum, data, function (err, result) {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        response.render('modifierSponsorPost', response);
+    })
+}

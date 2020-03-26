@@ -1,19 +1,18 @@
-<h1>Ajouter un sponsor</h1>
+<h1>Modifier un sponsor</h1>
 
-<form method="POST" action="ajouterSponsorPost">
+<form method="POST" action="/ModifierSponsorPost/{{sponum}}">
     <label for="nom">Nom</label>
-    <input name="SPONOM" type="text">
+    <input name="SPONOM" type="text" value="{{donneesSponsor.SPONOM}}">
 
     <label for="longueur">Secteur d'activité</label>
-    <input name="SPOSECTACTIVITE" type="text">
+    <input name="SPOSECTACTIVITE" type="text" value="{{donneesSponsor.SPOSECTACTIVITE}}">
 
-    <label for="ecurie">Ecurie sponsorisé</label>
+    <label for="pays">Ecurie sponsorisé</label>
     <select name="ECUNUM" >
         <option value="0">Aucune</option>
         {{#each listeEcurie}}
             <option value="{{this.ECUNUM}}">{{this.ECUNOM}}</option>
         {{/each}}
     </select>
-
     <input type="submit" value="Ajouter">
 </form>

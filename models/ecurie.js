@@ -30,15 +30,10 @@ module.exports.getListeEcurie = function (callback) {
 };
 
 module.exports.getDetailEcurie = function (ecunum, callback) {
-   // connection à la base
    db.getConnection(function (err, connexion) {
       if (!err) {
-         // s'il n'y a pas d'erreur de connexion
-         // execution de la requête SQL
-         let sql = "SELECT ECUNOM, ECUNOMDIR, ECUADRSIEGE, p.PAYNOM,f.FPNOM, ECUADRESSEIMAGE FROM `ecurie` e join pays p on e.PAYNUM=p.PAYNUM left join fourn_pneu f on f.FPNUM = e.FPNUM WHERE ECUNUM = " + ecunum
-         //console.log (sql);
+         let sql = "SELECT ECUNOM, ECUNOMDIR, ECUADRSIEGE, p.PAYNOM,f.FPNOM, ECUADRESSEIMAGE, ECUPOINTS FROM `ecurie` e join pays p on e.PAYNUM=p.PAYNUM left join fourn_pneu f on f.FPNUM = e.FPNUM WHERE ECUNUM = " + ecunum;
          connexion.query(sql, callback);
-         // la connexion retourne dans le pool
          connexion.release();
       }
    });
@@ -82,4 +77,17 @@ module.exports.supprimerEcurie = function (num, callback) {
             connexion.release;
         }
     });
+}
+
+module.exports.modifierEcurie = function (ecunum, data, fileName, callback) {
+    db.getConnection(function (err, connexion) {
+        if (!err) {
+            sql = 'UPDATE ecurie SET ECUNOM = \'' + data.ECUNOM + '\', ECUNOMDIR = \'' + data.ECUNOMDIR
+            + '\', ECUADRSIEGE = \'' + data.ECUADRSIEGE + '\', ECUPOINTS = ' + data.ECUPOINTS +
+            ', PAYNUM = \'' + data.PAYNUM + '\', ECUADRESSEIMAGE = \'' + fileName + '\' WHERE ECUNUM = ' + ecunum;
+            console.log(sql);
+            connexion.query(sql, callback);
+            connexion.release();
+        }
+    })
 }

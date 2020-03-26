@@ -50,8 +50,9 @@ module.exports.modifierCircuit = function (cirnum, data, fileName, callback) {
             sql = 'UPDATE circuit SET CIRNOM = \'' + data.CIRNOM + '\', CIRLONGUEUR = ' + data.CIRLONGUEUR
             + ', PAYNUM = ' + data.PAYNUM + ', CIRNBSPECTATEURS = ' + data.CIRNBSPECTATEURS +
             ', CIRTEXT = \'' + data.CIRTEXT + '\', CIRADRESSEIMAGE = \'' + fileName + '\' WHERE CIRNUM = ' + cirnum;
+            console.log(sql);
             connexion.query(sql, callback);
             connexion.release();
         }
-    }) 
+    })
 }

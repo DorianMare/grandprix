@@ -39,16 +39,6 @@ module.exports.ajouterPhotoPilote = function (data, callback) {
     });
 };
 
-module.exports.modifierPhotoPilote = function (pilnum, file, callback) {
-    db.getConnection(function (err, connexion) {
-        if (!err) {
-            let sql = 'UPDATE photo set PHOADRESSE = \'' + file.name + '\' WHERE PHONUM = 1 AND PILNUM = ' + pilnum;
-            connexion.query(sql, callback);
-            connexion.release();
-        }
-    });
-};
-
 module.exports.getListePilotesEcurie = function (ecunum, callback) {
     db.getConnection(function (err, connexion) {
         if (!err) {
@@ -136,12 +126,24 @@ module.exports.supprimerPilote = function (num, callback) {
 module.exports.modifierPilote = function (pilnum, data, callback) {
     db.getConnection(function (err, connexion) {
         if (!err) {
-            let sql = 'UPDATE pilote SET PILPRENOM = ' + data.PILPRENOM + ', PILNOM = ' + data.PILPRENOM
-            + ', PILDATENAIS = ' + data.PILDATENAIS + ', PAYNUM = ' + data.PAYNUM + ', PILPOINTS = ' + data.PILPOINTS
-            + ', PILTEXTE = ' + data.PILTEXTE + ', PILPOIDS = ' + data.PILPOIDS + ', ECUNUM = ' + data.ecunum
+            let sql = 'UPDATE pilote SET PILPRENOM = "' + data.PILPRENOM + '", PILNOM = "' + data.PILNOM
+            + '", PILDATENAIS = "' + data.PILDATENAIS + '", PAYNUM = ' + data.PAYNUM + ', PILPOINTS = ' + data.PILPOINTS
+            + ', PILTEXTE = "' + data.PILTEXTE + '", PILPOIDS = ' + data.PILPOIDS + ', ECUNUM = ' + data.ECUNUM
             + ' WHERE PILNUM = ' + pilnum;
+            console.log(sql);
             connexion.query(sql, callback);
             connexion.release();
         }
     });
 }
+
+
+module.exports.modifierPhotoPilote = function (pilnum, file, callback) {
+    db.getConnection(function (err, connexion) {
+        if (!err) {
+            let sql = 'UPDATE photo set PHOADRESSE = \'' + file.name + '\' WHERE PHONUM = 1 AND PILNUM = ' + pilnum;
+            connexion.query(sql, callback);
+            connexion.release();
+        }
+    });
+};
