@@ -2,16 +2,16 @@
 
 <form method="POST" action="/ajouterEcuriePost" enctype="multipart/form-data">
     <label for="nom">Nom</label>
-    <input type="text" name="ECUNOM" value="MajorProm">
+    <input required type="text" name="ECUNOM" value="MajorProm">
 
     <label for="directeur">Directeur</label>
-    <input type="text" name="ECUNOMDIR" value="Chastagner">
+    <input required type="text" name="ECUNOMDIR" value="Chastagner">
 
     <label for="adresse">Adresse du siege</label>
-    <input type="text" name="ECUADRSIEGE" value="74 rue meissonier">
+    <input required type="text" name="ECUADRSIEGE" value="74 rue meissonier">
 
     <label for="points">Points</label>
-    <input type="text" name="ECUPOINTS" value="50">
+    <input required type="text" name="ECUPOINTS" value="50">
 
     <label for="pays">Pays</label>
     <select name="PAYNUM" >
@@ -21,7 +21,7 @@
     </select>
 
     <label for="image">Image</label>
-    <input type="file" name="ECUADRESSEIMAGE" />
+    <input required type="file" name="ECUADRESSEIMAGE" />
     <span></span>
 
 

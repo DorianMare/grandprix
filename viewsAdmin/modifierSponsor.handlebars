@@ -2,10 +2,10 @@
 
 <form method="POST" action="/ModifierSponsorPost/{{sponum}}">
     <label for="nom">Nom</label>
-    <input name="SPONOM" type="text" value="{{donneesSponsor.SPONOM}}">
+    <input required name="SPONOM" type="text" value="{{donneesSponsor.SPONOM}}">
 
     <label for="longueur">Secteur d'activité</label>
-    <input name="SPOSECTACTIVITE" type="text" value="{{donneesSponsor.SPOSECTACTIVITE}}">
+    <input required name="SPOSECTACTIVITE" type="text" value="{{donneesSponsor.SPOSECTACTIVITE}}">
 
     <label for="pays">Ecurie sponsorisé</label>
     <select name="ECUNUM" >
