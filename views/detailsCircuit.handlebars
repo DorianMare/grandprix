@@ -1,7 +1,16 @@
-<img style="width: 200px; heigth: auto" src="/image/circuit/{{detailsCircuit.CIRADRESSEIMAGE}}" alt="imageCircuit">
-<p>Nom : {{detailsCircuit.CIRNOM}} <br />
-Longueur : {{detailsCircuit.CIRLONGUEUR}} m <br />
-Nombre de spectateurs : {{detailsCircuit.CIRNBSPECTATEURS}} <br />
-Pays : {{detailsCircuit.PAYNOM}}</p>
-{{> listeCircuitPartial}}
+<div id="blocCircuit">
+    <img style="width: 200px; heigth: auto" src="/image/circuit/{{detailsCircuit.CIRADRESSEIMAGE}}" alt="imageCircuit" class="petitBlocCircuit">
+    
+    <div class="petitBlocCircuit" id="bloc2Circuit">
+        <div><p class="bold">Nom :</p>{{detailsCircuit.CIRNOM}}</div>
+        <div><p class="bold">Longueur : </p>{{detailsCircuit.CIRLONGUEUR}} m</div>
+        <div><p class="bold">Nombre de spectateurs : </p>{{detailsCircuit.CIRNBSPECTATEURS}}</div>
+        <div><p class="bold">Pays : </p>{{detailsCircuit.PAYNOM}}</div>
+    </div>
+
+    <div class="petitBlocCircuit" id="bloc3Circuit">
+        {{> listeCircuitPartial}}
+    </div>
+</div>
+
 <p>{{detailsCircuit.CIRTEXT}}</p>

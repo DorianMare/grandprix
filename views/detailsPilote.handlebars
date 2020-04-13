@@ -1,17 +1,25 @@
 {{> nomPilotePartial}}
-<img src="/image/pilote/{{detailsPilote.PHOADRESSE}}" alt="imagePilote">
-<p>Nom : {{detailsPilote.PILPRENOM}} {{detailsPilote.PILNOM}}</p>
-<p>Date de naissance : {{formatDate vip.VIP_NAISSANCE 'DD MMMM YYYY' }}</p>
-<p>Poids : {{detailsPilote.PILPOIDS}} Kg</p>
-<p>Nationalité : {{detailsPilote.PAYNAT}}</p>
-<p>Taille : {{detailsPilote.PILTAILLE}} Cm</p>
 
-<p>Ecurie :
-{{#if detailsPilote.ECUNOM}}
-    {{detailsPilote.ECUNOM}}</p>
-{{else}}
-    Pas d'écurie cette année</p>
-{{/if}}
+<div id="blocProfile">
+    <img src="/image/pilote/{{detailsPilote.PHOADRESSE}}" alt="imagePilote" id="imgProfile" class="blocPilote">
+
+    <div class="blocPilote">
+        <p>Nom : {{detailsPilote.PILPRENOM}} {{detailsPilote.PILNOM}}</p>
+        <p>Date de naissance : {{formatDate vip.VIP_NAISSANCE 'DD MMMM YYYY' }}</p>
+        <p>Nationalité : {{detailsPilote.PAYNAT}}</p>
+        <p>Ecurie :
+        {{#if detailsPilote.ECUNOM}}
+            {{detailsPilote.ECUNOM}}</p>
+        {{else}}
+            Pas d'écurie cette année</p>
+        {{/if}}
+    </div>
+    
+    <div class="blocPilote" id="bloc3">
+        <p>Poids : {{detailsPilote.PILPOIDS}} Kg</p>
+        <p>Taille : {{detailsPilote.PILTAILLE}} Cm</p>
+    </div>
+</div>
 
 {{#if sponsoPilote}}
     <p>Principaux sponsors :</p>
@@ -22,7 +30,7 @@
     </p>
 {{/if}}
 
-<p>Qui suis-je ? {{detailsPilote.PILTEXTE}}</p>
+<p>Qui suis-je ? : {{detailsPilote.PILTEXTE}}</p>
 
 {{#each photosPilote}}
     <a

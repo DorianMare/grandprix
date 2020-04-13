@@ -1,4 +1,7 @@
-<p>Dernier résultats</p>
-{{listeGrandPrixDate.GPNOM}} du {{formatDate listeGrandPrixDate.GPDATE 'DD MMMM YYYY' }}  <br>
-Mise à jour le : {{formatDate listeGrandPrixDate.GPDATEMAJ 'DD MMMM YYYY' }} <br>
-<a href="/detailGrandPrix/{{listeGrandPrixDate.GPNUM}}">Voir les résultats</a>
+<div id="home">
+    <p id="titreHome">Derniers résultats</p>
+    <p style="font-weight: bold;">{{listeGrandPrixDate.GPNOM}} du {{formatDate listeGrandPrixDate.GPDATE 'DD MMMM YYYY' }}</p>
+    Mise à jour le : {{formatDate listeGrandPrixDate.GPDATEMAJ 'DD MMMM YYYY' }} <br>
+    <a href="/detailGrandPrix/{{listeGrandPrixDate.GPNUM}}">Voir les résultats</a>
+</div>
+
