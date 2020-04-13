@@ -225,3 +225,16 @@ form {
 }
 
 /*////////////////PARTIE ADMIN///////////////////*/
+
+#bloc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#bouton {
+  margin: auto;
+  background-color: red;
+  color: white;
+  padding: 6px 17px;
+}
