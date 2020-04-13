@@ -51,7 +51,7 @@ module.exports.DetailEcurie = function(request, response){
            return;
         }
         response.listeEcurie = result[0];
-        response.detailEcurie = result[1];
+        response.detailEcurie = result[1][0];
         response.listeVoiture = result[2];
         response.listePilotesEcurie = result[3];
         response.render('detailEcurie', response);

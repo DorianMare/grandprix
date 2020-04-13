@@ -124,7 +124,7 @@ table{
 
 table, th, td {
   border: 1px solid black;
-	padding : 5px 10px 10px 5px;
+  padding : 5px 10px 10px 5px;
 }
 
 /*formulaire*/
@@ -203,6 +203,24 @@ form {
 }
 
 #bloc3Circuit {
+  flex: 1;
+}
+
+/*detailsEcuries*/
+#blocEcurie {
+  display: flex;
+}
+
+.petitBlocEcurie {
+  margin-right: 20px;
+}
+
+#bloc2Ecurie {
+  display: flex;
+  flex-direction: column;
+}
+
+#bloc3Ecurie {
   flex: 1;
 }
 

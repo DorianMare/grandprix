@@ -1,20 +1,40 @@
-{{#each detailEcurie}}
-    <img src="/image/ecurie/{{{this.ECUADRESSEIMAGE}}} " >
-    <p>
-      Nom : {{this.ECUNOM}} <br>
-      Directeur : {{this.ECUNOMDIR}}<br>
-      Adresse : {{this.ECUADRSIEGE}}<br>
-      Pays : {{this.PAYNOM}}<br>
-      {{#if this.FPNOM}}
-        Fournisseur de pneumatiques : {{this.FPNOM}}
-      {{/if}}
-    </p>
- {{/each}}
+<div style="display: flex;">
+  <div>
+    <div id="blocEcurie">
+      <img src="/image/ecurie/{{{detailEcurie.ECUADRESSEIMAGE}}} " class="petitBlocEcurie" id="imgProfile">
 
- {{#if listePilotesEcurie }}
-   {{> listePiloteEcuriePartial }}
-   {{> listeVoiturePartial }}
- {{else}}
+      <div class="petitBlocEcurie">
+        <div>
+          <p class="bold">Nom : </p>{{detailEcurie.ECUNOM}}
+        </div>
+        <div>
+          <p class="bold">Directeur : </p>{{detailEcurie.ECUNOMDIR}}
+        </div>
+        <div>
+          <p class="bold">Adresse : </p>{{detailEcurie.ECUADRSIEGE}}
+        </div>
+        <div>
+          <p class="bold">Pays : </p> {{detailEcurie.PAYNOM}}
+        </div>
+        <div>
+          {{#if detailEcurie.FPNOM}}
+          <p class="bold">Fournisseur de pneumatiques : </p>{{detailEcurie.FPNOM}}
+          {{/if}}
+        </div>
+      </div>
+    </div>
+
+    {{#if listePilotesEcurie }}
+    <div>
+      {{> listePiloteEcuriePartial }}
+      {{> listeVoiturePartial }}
+    </div>
+    {{else}}
     Cette écurie ne participe pas au championnat cette année
- {{/if}}
- {{> listeEcuriePartial }}
+    {{/if}}
+  </div>
+  
+  <div id="bloc3Ecurie">
+    {{> listeEcuriePartial }}
+  </div>
+</div>
