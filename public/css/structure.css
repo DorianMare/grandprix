@@ -181,6 +181,8 @@ form {
 }
 
 #bloc3 {
+  display: flex;
+  flex-direction: column;
   align-self: center;
 }
 
@@ -235,10 +237,12 @@ form {
 #bloc2 {
   display: flex;
   flex-direction: column;
+  width: 150px;
 }
 
 #bloc3 {
   display: flex;
+  flex-direction: row;
 }
 
 #bloc4 {
