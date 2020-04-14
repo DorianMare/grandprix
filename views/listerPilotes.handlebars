@@ -3,9 +3,12 @@
 
 <div id="pilotes">
   {{#each pilotes}}
-    <a href="/detailsPilote/{{this.PILNUM}}">
+    <div style="margin-left: 20px;">
+      <a href="/detailsPilote/{{this.PILNUM}}">
       <img src="/image/pilote/{{{this.PHOADRESSE}}}" id="imgProfile">
       <p id="lienPilote">{{this.PILNOM}}</p> <p>{{this.PILPRENOM}}</p>
     </a>
+    </div>
+    
   {{/each}}
 </div>
