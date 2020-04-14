@@ -47,7 +47,7 @@ module.exports.modifierCircuit = function (cirnum, data, fileName, callback) {
         if (!err) {
             sql = 'UPDATE circuit SET CIRNOM = \'' + data.CIRNOM + '\', CIRLONGUEUR = ' + data.CIRLONGUEUR
             + ', PAYNUM = ' + data.PAYNUM + ', CIRNBSPECTATEURS = ' + data.CIRNBSPECTATEURS +
-            ', CIRTEXT = \'' + data.CIRTEXT + '\', CIRADRESSEIMAGE = \'' + fileName + '\' WHERE CIRNUM = ' + cirnum;
+            ', CIRTEXT = \"' + data.CIRTEXT + '\", CIRADRESSEIMAGE = \'' + fileName + '\' WHERE CIRNUM = ' + cirnum;
             console.log(sql);
             connexion.query(sql, callback);
             connexion.release();
