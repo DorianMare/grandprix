@@ -232,9 +232,26 @@ form {
   align-items: center;
 }
 
+#bloc2 {
+  display: flex;
+  flex-direction: column;
+}
+
+#bloc3 {
+  display: flex;
+}
+
+#bloc4 {
+  display: flex;
+  flex-direction: column;
+  width: min-content;
+  margin-right: 20px;
+}
+
 #bouton {
   margin: auto;
   background-color: red;
   color: white;
   padding: 6px 17px;
 }
+

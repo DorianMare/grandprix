@@ -1,7 +1,11 @@
-{{#each listeVoiture}}
-  <img class="imgVoiture"src="/image/ecurie/voiture/{{{this.VOIADRESSEIMAGE}}} " >
-  <p>
-    {{this.VOINOM}}
-    {{this.TYPELIBELLE  }}
-  </p>
+<div id="bloc3">
+  {{#each listeVoiture}}
+  <div id="bloc4">
+    <img class="imgVoiture"src="/image/ecurie/voiture/{{{this.VOIADRESSEIMAGE}}}">
+    <p>
+      {{this.VOINOM}}
+      {{this.TYPELIBELLE}}
+    </p>
+  </div>
 {{/each}}
+</div>
