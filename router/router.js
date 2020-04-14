@@ -9,7 +9,7 @@ let CircuitController = require('./../controllers/CircuitController');
 module.exports = function(app){
 
 // Main Routes
-    app.get('/', HomeController.Index);
+    app.get('/', ResultatController.ListerGrandPrixDate);
     app.get('/accueil', ResultatController.ListerGrandPrixDate);
 
 // pilotes
@@ -28,8 +28,6 @@ module.exports = function(app){
  //Résultats
    app.get('/resultats', ResultatController.ListerGrandPrix);
    app.get('/detailGrandPrix/:gpnum', ResultatController.DetailGrandPrix);
-
-
 
 // tout le reste
 app.get('*', HomeController.NotFound);
