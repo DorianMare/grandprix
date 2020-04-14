@@ -34,9 +34,7 @@ module.exports.ajouterCircuit = function (data, fileName, callback) {
 module.exports.supprimerCircuit = function (cirnum, callback) {
     db.getConnection(function (err, connexion) {
         if (!err) {
-            gpnumQuery = 'SELECT * FROM grandprix WHERE CIRNUM = ' + cirnum;
-            connexion.query('DELETE FROM course WHERE EXISTS (' + gpnumQuery + ')');
-            connexion.query('DELETE FROM essais WHERE EXISTS (' + gpnumQuery + ')');
+            connexion.query('DELETE FROM course WHERE GPNUM = (SELECT GPNUM FROM grandprix WHERE CIRNUM = '+ cirnum+')');
             connexion.query('DELETE FROM grandprix WHERE CIRNUM = ' + cirnum);
             connexion.query('DELETE FROM circuit WHERE CIRNUM = ' + cirnum, callback);
             connexion.release();
