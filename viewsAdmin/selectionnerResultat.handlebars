@@ -1,19 +1,21 @@
-<img src="/image/cat_resultat.png" alt="ImageDeDrapeau"> <br>
+<div id="bloc">
+    <img src="/image/cat_resultat.png" alt="ImageDeDrapeau"> <br>
 
-<h1>{{title}}</h1>
-<p>Selectionner un grand prix :</p>
+    <h1>{{title}}</h1>
+    <p>Selectionner un grand prix :</p>
 
-<table class="tabpayscir">
-    {{#each selectionGrandPrix}}
-    <tr>
-        <td><img style="width: 35px; height: auto;" src="/image/pays/{{this.PAYADRDRAP}}" alt="imageDrapeau" />
-            <p>{{this.GPNOM}}</p>
-        </td>
-        <td>
-            <img src="/image/act_edit.png" alt="modif">
-            <a href="/saisieResultats/{{this.GPNUM}}"> Modifier</a>
-        </td>
-    </tr>
-    {{/each}}
-</table>
-<br class="myboth" />
+    <table class="tabpayscir">
+        {{#each selectionGrandPrix}}
+        <tr>
+            <td><img style="width: 35px; height: auto;" src="/image/pays/{{this.PAYADRDRAP}}" alt="imageDrapeau" />
+                <p>{{this.GPNOM}}</p>
+            </td>
+            <td>
+                <img src="/image/act_edit.png" alt="modif">
+                <a href="/saisieResultats/{{this.GPNUM}}"> Modifier</a>
+            </td>
+        </tr>
+        {{/each}}
+    </table>
+    <br class="myboth" />
+</div>
